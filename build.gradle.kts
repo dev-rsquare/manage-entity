@@ -10,7 +10,6 @@ plugins {
 
 apply(plugin = "kotlin-jpa")
 apply(plugin = "kotlin-allopen")
-apply(plugin = "com.github.dcendents.android-maven")
 
 
 group = "com.github.dev-rsquare"
@@ -29,6 +28,10 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-annotations:2.9.9")
     implementation("javax.persistence:javax.persistence-api:2.2")
     implementation("com.github.jitpack:gradle-simple:1.0.5")
+}
+
+application {
+    mainClassName = "kr.co.rsqure.lib.AppMain"
 }
 
 tasks {
