@@ -1,4 +1,4 @@
-package kr.co.rsquare.lib.entity.com
+package kr.co.rsquare.lib.model.entity.com
 
 import java.io.Serializable
 

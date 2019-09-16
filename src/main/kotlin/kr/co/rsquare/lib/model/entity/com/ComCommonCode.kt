@@ -1,6 +1,6 @@
-package kr.co.rsquare.lib.entity.com
+package kr.co.rsquare.lib.model.entity.com
 
-import kr.co.rsquare.lib.entity.EntityTail
+import kr.co.rsquare.lib.model.entity.EntityTail
 import java.io.Serializable
 import javax.persistence.Entity
 import javax.persistence.Id

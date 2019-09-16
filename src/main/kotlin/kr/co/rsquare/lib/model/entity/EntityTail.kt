@@ -1,4 +1,4 @@
-package kr.co.rsquare.lib.entity
+package kr.co.rsquare.lib.model.entity
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import java.io.Serializable
