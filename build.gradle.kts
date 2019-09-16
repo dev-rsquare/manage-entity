@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     application
     idea
-    maven
     kotlin("jvm") version "1.3.41"
 
     val kotlinVersion = "1.3.31"
