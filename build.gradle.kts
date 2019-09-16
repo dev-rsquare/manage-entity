@@ -18,7 +18,7 @@ apply(plugin = "io.spring.dependency-management")
 
 
 group = "com.github.dev-rsquare"
-version = "0.0.1"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
