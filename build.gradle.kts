@@ -51,10 +51,6 @@ tasks {
         kotlinOptions.jvmTarget = "1.8"
     }
 
-    build {
-        dependsOn(shadowJar)
-    }
-
     test {
         useJUnit()
     }
