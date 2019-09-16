@@ -1,3 +1,4 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -10,6 +11,8 @@ plugins {
     id("org.jetbrains.kotlin.plugin.jpa") version kotlinVersion
     id("org.jetbrains.kotlin.plugin.spring") version kotlinVersion
     id("org.springframework.boot") version "2.1.4.RELEASE"
+
+    id("com.github.johnrengelman.shadow") version "4.0.4"
 }
 
 apply(plugin = "kotlin-jpa")
@@ -18,7 +21,7 @@ apply(plugin = "io.spring.dependency-management")
 
 
 group = "com.github.dev-rsquare"
-version = "1.0.0"
+version = "19.09.09"
 
 repositories {
     mavenCentral()
@@ -55,8 +58,6 @@ tasks {
         manifest {
             attributes(mapOf("Main-Class" to application.mainClassName))
         }
-        val version = "19.09.1-SNAPSHOT"
-        archiveName = "${application.applicationName}-$version.jar"
         from(
             configurations.compileClasspath.get().map {
                 if (it.isDirectory) it else zipTree(it)
@@ -64,15 +65,16 @@ tasks {
        )
     }
 
-    install {
-        repositories.withGroovyBuilder {
-            "mavenInstaller" {
-                "pom" {
-                    setProperty("version", "19.09.10")
-                    setProperty("artifactId", "manage-entity")
-                }
-            }
+    named<ShadowJar>("shadowJar") {
+        archiveBaseName.set("shadow")
+        mergeServiceFiles()
+        manifest {
+            attributes(mapOf("Main-Class" to application.mainClassName))
         }
+    }
+
+    build {
+        dependsOn(shadowJar)
     }
 
     test {
