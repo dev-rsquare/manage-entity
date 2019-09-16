@@ -1,10 +1,13 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+group = "com.github.dev-rsquare"
+version = "19.09.09"
+
 plugins {
     application
     idea
-    maven
+    `maven-publish`
     kotlin("jvm") version "1.3.41"
 
     val kotlinVersion = "1.3.31"
@@ -19,9 +22,6 @@ apply(plugin = "kotlin-jpa")
 apply(plugin = "kotlin-allopen")
 apply(plugin = "io.spring.dependency-management")
 
-
-group = "com.github.dev-rsquare"
-version = "19.09.09"
 
 repositories {
     mavenCentral()
