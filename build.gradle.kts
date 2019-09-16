@@ -41,12 +41,25 @@ dependencies {
 }
 
 application {
+    applicationName = "manage-entity"
+    group = "com.github.dev-rsquare"
     mainClassName = "kr.co.rsqure.lib.AppMain"
 }
 
 tasks {
     withType<KotlinCompile> {
         kotlinOptions.jvmTarget = "1.8"
+    }
+
+    withType<Jar>{
+        manifest {
+            attributes(mapOf("Main-Class" to application.mainClassName))
+        }
+        from(
+            configurations.compileClasspath.get().map {
+                if (it.isDirectory) it else zipTree(it)
+            }
+       )
     }
 
     test {
