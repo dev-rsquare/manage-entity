@@ -55,11 +55,24 @@ tasks {
         manifest {
             attributes(mapOf("Main-Class" to application.mainClassName))
         }
+        val version = "19.09.1-SNAPSHOT"
+        archiveName = "${application.applicationName}-$version.jar"
         from(
             configurations.compileClasspath.get().map {
                 if (it.isDirectory) it else zipTree(it)
             }
        )
+    }
+
+    install {
+        repositories.withGroovyBuilder {
+            "mavenInstaller" {
+                "pom" {
+                    setProperty("version", "19.09.10")
+                    setProperty("artifactId", "manage-entity")
+                }
+            }
+        }
     }
 
     test {
